@@ -24,6 +24,15 @@
   color: white;
 }
 
+.landing {
+  text-align: center;
+}
+
+nav {
+  background-color: black;
+  color: wheat;
+}
+
 .App-link {
   color: #61dafb;
 }
