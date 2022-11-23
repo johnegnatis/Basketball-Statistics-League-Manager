@@ -1,9 +1,13 @@
 # Hello team
 
 ## Prerequisites:
+
 [NodeJS](https://nodejs.org/en/download/)
+
 [MySQL](https://dev.mysql.com/downloads/mysql/)
+
 [PHP](https://www.php.net/manual/en/install.php)
+
 [XAMPP for PHP host](https://www.apachefriends.org/download.html)
 
 ## Steps
