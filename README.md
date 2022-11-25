@@ -16,3 +16,7 @@
 3. The files in the folder "php-files" are to be copied into the XAMPP htdocs.
 4. Setup MYSQL server (Use the same DB username/password for simplicity).
 5. Import mysql dump folder.
+
+## Attribute:
+
+- edit by Yana Marudova from <a href="https://thenounproject.com/browse/icons/term/edit/" target="_blank" title="edit Icons">Noun Project</a>
