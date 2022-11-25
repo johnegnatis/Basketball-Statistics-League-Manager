@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import jQuery from 'jquery';
 import { useEffect, useState } from 'react';
 import {
@@ -13,20 +13,8 @@ import Teams from './pages/Teams';
 import NotFound from './pages/NotFound';
 
 function App() {
-  const [data, setData] = useState('');
-  useEffect(() => {
-    jQuery.ajax({
-      type: 'POST',
-      dataType: 'json',
-      url: 'http://localhost/nba/getStats.php',
-      success: (data) => { setData(data)},
-    });
-  }, []);
-
-  console.log(data);
 
   return (
-    // <LandingPage/>
     <BrowserRouter>
       <Routes>
         <Route index element={<LandingPage/>} />

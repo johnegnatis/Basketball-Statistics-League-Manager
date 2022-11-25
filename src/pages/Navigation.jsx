@@ -6,9 +6,17 @@ export const Navigation = () => {
 
     return (
         <nav>
-            <Link to={NAV.INDEX}>Home</Link>
-            <Link to={NAV.STATS}>Stats</Link>
-            <Link to={NAV.TEAMS}>Teams</Link>
+            <ul>
+                <li>
+                    <Link className="no-dec" to={NAV.INDEX}>Home</Link>
+                </li>
+                <li>
+                    <Link className="no-dec" to={NAV.STATS}>Stats</Link>
+                </li>
+                <li>
+                    <Link className="no-dec" to={NAV.TEAMS}>Teams</Link>
+                </li>
+            </ul>
         </nav>
     )
 }
