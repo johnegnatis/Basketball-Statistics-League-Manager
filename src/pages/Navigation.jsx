@@ -1,10 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { NAV } from "../appConstants";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { NAV } from '../appConstants'
 
 export const Navigation = () => {
-
-    return (
+  return (
         <nav>
             <ul>
                 <li>
@@ -18,5 +17,5 @@ export const Navigation = () => {
                 </li>
             </ul>
         </nav>
-    )
+  )
 }

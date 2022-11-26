@@ -1,8 +1,8 @@
-import React from "react";
-import { Navigation } from "./Navigation";
+import React from 'react'
+import { Navigation } from './Navigation'
 
 const LandingPage = () => {
-    return (
+  return (
         <div>
             <Navigation/>
             <div className="App-header">
@@ -18,6 +18,6 @@ const LandingPage = () => {
                 </ul>
             </div>
         </div>
-    );
-};
-export default LandingPage;
+  )
+}
+export default LandingPage

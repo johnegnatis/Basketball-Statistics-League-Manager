@@ -1,18 +1,15 @@
-import React from "react";
-import { useState, useEffect } from 'react';
-import jQuery from "jquery";
-import { Navigation } from "./Navigation";
-import Team from "../components/Team";
+import React from 'react'
+import { Navigation } from './Navigation'
+import Team from '../components/Team'
 
 const Teams = () => {
-
-    return (
+  return (
         <div>
             <Navigation/>
             <div className="App-header">
                 <Team/>
             </div>
         </div>
-    );
-};
-export default Teams;
+  )
+}
+export default Teams

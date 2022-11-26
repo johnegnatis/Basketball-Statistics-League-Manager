@@ -11,26 +11,17 @@
     $Coach_name = $_GET['Coach_name'];
 
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-    if($conn -> connect_errno) {
-        echo 'Could not connect: ' . $conn -> connect_errno;
-        exit();
-     }
      
-     $sql = 'Update team set No_trophy = ?, Coach_name = ? where Name = ?';
-     $result = $conn->prepared_query($sql, [$No_trophy, $Coach_name, $Name]);
-
-     $emparray = array();
-     while($row =mysqli_fetch_assoc($result))
-     {
-         $emparray[] = $row;
+     if( isset($Name) && isset($No_trophy) && isset($Coach_name)) {
+        $stmt = $conn->prepare('Update team set No_trophy = ?, Coach_name = ? where Name = ?');
+        $stmt->bind_param("iss", $No_trophy, $Coach_name, $Name);
+        $stmt->execute();
+        if ($stmt->affected_rows < 1) {
+            echo 2;
+        }
+     } else {
+        echo -1;
      }
 
-     if ($result->num_rows > 0) {
-        header('Content-Type: application/json');
-        echo json_encode($emparray);
-      } else {
-        echo "0 results or error";
-      }
-      $conn->close();
+     $conn->close();
 ?>

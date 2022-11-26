@@ -2,21 +2,17 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { Drawer, Button, Input } from 'rsuite'
 
-export default function EditTeam ({ editData, setEditData, sendEditData }) {
-  const [trophyCount, setTrophyCount] = useState(parseInt(editData.No_trophy) || 0)
+export default function EditTeam ({ loading, editData, setEditData, sendEditData }) {
+  const [trophyCount, setTrophyCount] = useState('')
   const coachRef = useRef()
 
   const incrementTrophy = useCallback((num) => {
     setTrophyCount((prev) => (prev + num < 0) ? 0 : prev + num)
   }, [setTrophyCount])
 
-  const setStates = useCallback(() => {
-    setTrophyCount(parseInt(editData.No_trophy))
-  }, [setTrophyCount])
-
   const sendPayload = () => {
     const payload = {
-      Coach_name: (coachRef.current.value) ? coachRef.current.value : editData.Coach_name,
+      Coach_name: (coachRef.current && coachRef.current.value) ? coachRef.current.value : editData.Coach_name,
       No_trophy: trophyCount,
       Name: editData.Name
     }
@@ -24,7 +20,7 @@ export default function EditTeam ({ editData, setEditData, sendEditData }) {
   }
 
   return (
-    <Drawer open={!!editData} onOpen={() => setStates} backdrop autoFocus size='xs' onClose={() => setEditData('')} placement="right">
+    <Drawer open={!!editData} onOpen={() => setTrophyCount(parseInt(editData.No_trophy))} backdrop autoFocus size='xs' onClose={() => setEditData('')} placement="right">
         <Drawer.Header>
             <Drawer.Title>{`Edit Team: ${editData.Name}`}</Drawer.Title>
         </Drawer.Header>
@@ -44,7 +40,7 @@ export default function EditTeam ({ editData, setEditData, sendEditData }) {
             <br />
 
             {/* Submit */}
-            <Button onClick={() => sendPayload()} appearance='primary' color='green'
+            <Button loading={loading} onClick={() => sendPayload()} appearance='primary' color='green'
             >Submit</Button>
         </Drawer.Body>
     </Drawer>

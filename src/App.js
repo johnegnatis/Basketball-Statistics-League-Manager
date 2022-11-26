@@ -1,19 +1,17 @@
-import './App.scss';
-import jQuery from 'jquery';
-import { useEffect, useState } from 'react';
+import './App.scss'
+import React from 'react'
 import {
   BrowserRouter,
   Routes,
-  Route,
-} from "react-router-dom";
-import LandingPage from './pages/Landing';
-import { NAV } from './appConstants';
-import Stats from './pages/Stats';
-import Teams from './pages/Teams';
-import NotFound from './pages/NotFound';
+  Route
+} from 'react-router-dom'
+import LandingPage from './pages/Landing'
+import { NAV } from './appConstants'
+import Stats from './pages/Stats'
+import Teams from './pages/Teams'
+import NotFound from './pages/NotFound'
 
-function App() {
-
+function App () {
   return (
     <BrowserRouter>
       <Routes>
@@ -23,7 +21,7 @@ function App() {
         <Route path="*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

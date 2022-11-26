@@ -1,21 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react'
-
 import jQuery from 'jquery'
 import { Table } from './Table'
 import EditTeam from './EditTeam'
-import { getQuery } from '../../appConstants'
+import { getQuery, getMessage } from '../../appConstants'
+import { useToaster } from 'rsuite'
 
 export default function Team () {
+  // gets data to display in tables
   const [teamData, setTeamData] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-
-  // to edit
-  const [editData, setEditData] = useState('')
-
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     setLoading(true)
-    const req = jQuery.ajax({
+    jQuery.ajax({
       type: 'POST',
       dataType: 'json',
       url: getQuery.getTeams(),
@@ -30,13 +27,17 @@ export default function Team () {
         setTeamData('')
       }
     })
+  }, [setLoading, setError, setTeamData])
 
-    return () => {
-      req.abort()
-      setTeamData('')
-    }
+  useEffect(() => {
+    fetchData()
   }, [])
 
+  // varibles for editing table
+  const [editData, setEditData] = useState('')
+  const [editLoading, setEditLoading] = useState(false)
+
+  // sets team name to edit
   const setTeamName = (name) => {
     const editTuple = teamData.find((row) => row.Name === name)
     if (editTuple) {
@@ -45,30 +46,38 @@ export default function Team () {
       console.error('typeNotFound Team/index.jsx')
     }
   }
-  if (loading) return <h1>Loading...</h1>
-  if (error || !teamData || teamData.length <= 0) return <h1>{error || 'no data'}</h1>
 
-  const sendEditData = useCallback((payload) => {
-    setLoading(true)
-    setEditData('')
+  // edit data using api call
+  const toaster = useToaster()
+  const sendEditData = (payload) => {
+    setEditLoading(true)
     const query = getQuery.editTeam(payload.Name, payload.No_trophy, payload.Coach_name)
     jQuery.ajax({
-      type: 'GET',
-      dataType: 'json',
       url: query,
-      success: (data) => {
-        console.log('success')
+      success: (msg) => {
+        if (msg === '2') {
+          toaster.push(getMessage.warning('Nothing was updated'), 'topCenter')
+        } else if (msg === '-1') {
+          toaster.push(getMessage.error('Update failed'), 'topCenter')
+        } else {
+          setEditData('')
+          toaster.push(getMessage.success('Update successful'), 'topCenter')
+          fetchData()
+        }
       },
       error: () => {
-        console.error('fail')
+        toaster.push(getMessage.error('Update failed'), 'topCenter')
       }
     })
-  }, [])
+    setEditLoading(false)
+  }
 
+  if (loading) return <h1>Loading...</h1>
+  if (error || !teamData || teamData.length <= 0) return <h1>{error || 'no data'}</h1>
   return (
       <>
         <Table data={teamData} editTeamName={setTeamName}/>
-        <EditTeam setEditData={setEditData} editData={editData} sendEditData={sendEditData} />
+        <EditTeam loading={editLoading} setEditData={setEditData} editData={editData} sendEditData={sendEditData} />
       </>
   )
 }

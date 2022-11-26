@@ -1,8 +1,8 @@
-import React from "react";
-import { Navigation } from "./Navigation";
+import React from 'react'
+import { Navigation } from './Navigation'
 
 const NotFound = () => {
-    return (
+  return (
         <div>
             <Navigation/>
             <div className="App-header">
@@ -11,6 +11,6 @@ const NotFound = () => {
                 </h1>
             </div>
         </div>
-    );
-};
-export default NotFound;
+  )
+}
+export default NotFound
