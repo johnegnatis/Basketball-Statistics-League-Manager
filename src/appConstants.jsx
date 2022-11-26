@@ -25,5 +25,8 @@ export const getQuery = {
   },
   editTeam: (Name, No_trophy, Coach_name) => {
     return trimURL(`http://localhost/nba/editTeam.php?Name=${Name}&No_trophy=${No_trophy}&Coach_name=${Coach_name}`)
+  },
+  getTeamAndPlayers: (teamName) => {
+    return trimURL(`http://localhost/nba/getTeamAndPlayer.php?Name=${teamName}`)
   }
 }

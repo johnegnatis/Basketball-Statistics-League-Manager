@@ -1,4 +1,5 @@
 import './App.scss'
+import 'rsuite/dist/rsuite.min.css'
 import React from 'react'
 import {
   BrowserRouter,
@@ -10,6 +11,7 @@ import { NAV } from './appConstants'
 import Stats from './pages/Stats'
 import Teams from './pages/Teams'
 import NotFound from './pages/NotFound'
+import IndividualTeam from './pages/IndividualTeam'
 
 function App () {
   return (
@@ -18,6 +20,7 @@ function App () {
         <Route index element={<LandingPage/>} />
         <Route path={NAV.STATS} element={<Stats />}/>
         <Route path={NAV.TEAMS} element={<Teams />}/>
+        <Route path={`${NAV.TEAMS}/:teamName`} element = {<IndividualTeam /> } />
         <Route path="*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>

@@ -14,7 +14,7 @@ const LandingPage = () => {
                     <li>Eton Weber</li>
                     <li>Gia Tran</li>
                     <li>Peyton ..</li>
-                    <li>Luke ..</li>
+                    <li>Luke Tran</li>
                 </ul>
             </div>
         </div>

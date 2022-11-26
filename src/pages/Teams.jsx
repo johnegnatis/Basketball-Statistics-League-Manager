@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigation } from './Navigation'
-import Team from '../components/Team'
+import Team from '../components/Teams'
 
 const Teams = () => {
   return (
