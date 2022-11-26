@@ -56,17 +56,17 @@ export default function Team () {
       url: query,
       success: (msg) => {
         if (msg === '2') {
-          toaster.push(getMessage.warning('Nothing was updated'), 'topCenter')
+          toaster.push(getMessage.warning('Nothing was updated'))
         } else if (msg === '-1') {
-          toaster.push(getMessage.error('Update failed'), 'topCenter')
+          toaster.push(getMessage.error('Update failed'))
         } else {
           setEditData('')
-          toaster.push(getMessage.success('Update successful'), 'topCenter')
+          toaster.push(getMessage.success('Update successful'))
           fetchData()
         }
       },
       error: () => {
-        toaster.push(getMessage.error('Update failed'), 'topCenter')
+        toaster.push(getMessage.error('Update failed'))
       }
     })
     setEditLoading(false)
