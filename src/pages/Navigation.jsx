@@ -1,22 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { NAV } from '../appUtils'
+import Basketball from '../images/basketball.svg'
 
 export const Navigation = () => {
+  const navigate = useNavigate()
+
   return (
     <nav>
+      <img src={Basketball}
+        alt="basketball"
+        height='40px'/>
       <ul>
-        <li>
-          <Link className="no-dec"
-            to={NAV.INDEX}>Home</Link>
+        <li onClick={() => navigate(NAV.INDEX)}>
+          Home
         </li>
-        <li>
-          <Link className="no-dec"
-            to={NAV.STATS}>Stats</Link>
+        <li onClick={() => navigate(NAV.STATS)}>
+          Stats
         </li>
-        <li>
-          <Link className="no-dec"
-            to={NAV.TEAMS}>Teams</Link>
+        <li onClick={() => navigate(NAV.TEAMS)}>
+          Teams
         </li>
       </ul>
     </nav>

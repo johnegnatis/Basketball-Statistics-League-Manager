@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import jQuery from 'jquery'
-import { Table } from './Table'
+import { NewTable } from './Table'
 import EditTeam from './EditTeam'
 import { getQuery, getMessage } from '../../appUtils'
 import { useToaster, Loader } from 'rsuite'
@@ -33,12 +33,13 @@ export default function Team () {
     fetchData()
   }, [])
 
-  // varibles for editing table
+  // variables for editing table
   const [editData, setEditData] = useState('')
   const [editLoading, setEditLoading] = useState(false)
 
   // sets team name to edit
   const setTeamName = (name) => {
+    console.log(name)
     const editTuple = teamData.find((row) => row.Name === name)
     if (editTuple) {
       setEditData(editTuple)
@@ -83,9 +84,7 @@ export default function Team () {
     <>
       <h1>Teams</h1>
       <div className='table-column-2'>
-        <Table data={[...teamData].splice(0, teamData.length / 2 - 1)}
-          editTeamName={setTeamName}/>
-        <Table data={[...teamData].splice(teamData.length / 2, teamData.length - 1)}
+        <NewTable data={teamData}
           editTeamName={setTeamName}/>
       </div>
       <EditTeam loading={editLoading}
