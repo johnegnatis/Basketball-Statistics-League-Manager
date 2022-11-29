@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react'
 import jQuery from 'jquery'
 import { Table } from './Table'
 import EditTeam from './EditTeam'
-import { getQuery, getMessage } from '../../appConstants'
-import { useToaster } from 'rsuite'
+import { getQuery, getMessage } from '../../appUtils'
+import { useToaster, Loader } from 'rsuite'
 
 export default function Team () {
   // gets data to display in tables
@@ -72,12 +72,26 @@ export default function Team () {
     setEditLoading(false)
   }
 
-  if (loading) return <h1>Loading...</h1>
+  if (loading) {
+    return <Loader vertical
+      size="lg"
+      center
+      content="loading" />
+  }
   if (error || !teamData || teamData.length <= 0) return <h1>{error || 'no data'}</h1>
   return (
-      <>
-        <Table data={teamData} editTeamName={setTeamName}/>
-        <EditTeam loading={editLoading} setEditData={setEditData} editData={editData} sendEditData={sendEditData} />
-      </>
+    <>
+      <h1>Teams</h1>
+      <div className='table-column-2'>
+        <Table data={[...teamData].splice(0, teamData.length / 2 - 1)}
+          editTeamName={setTeamName}/>
+        <Table data={[...teamData].splice(teamData.length / 2, teamData.length - 1)}
+          editTeamName={setTeamName}/>
+      </div>
+      <EditTeam loading={editLoading}
+        setEditData={setEditData}
+        editData={editData}
+        sendEditData={sendEditData} />
+    </>
   )
 }

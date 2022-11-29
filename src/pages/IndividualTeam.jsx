@@ -8,10 +8,10 @@ const IndividualTeam = () => {
 
   return (
     <div>
-        <Navigation />
-        <div className="App-header">
-            <DisplayTeam teamName={params.teamName}/>
-        </div>
+      <Navigation />
+      <div className="App-header">
+        <DisplayTeam teamName={params.teamName}/>
+      </div>
     </div>
   )
 }

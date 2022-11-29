@@ -7,6 +7,8 @@
     $dbname = 'NBA';
 
     $Name = $_GET['Name'];
+    $Start_date = $_GET['Start_date'];
+    $End_date = $_GET['End_date'];
 
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -15,18 +17,22 @@
         exit();
      }
      
-     if( isset($Name) ) {
-        $stmt = $conn->prepare('select Fname, Lname, Height, Weight, Dateofbirth, No_trophy, Coach_name
-        from player p, team t
-        where p.Team = t.Name and t.Name = ?');
-        $stmt->bind_param("s", $Name);
+     if( isset($Name) && isset($Start_date) && isset($End_date) ) {
+        $stmt = $conn->prepare('select Home_team, Away_team, Home_team_points, Away_team_points,
+        Game_date
+        from game g
+        where (g.Home_team = ? or Away_team = ?)
+        and Game_date >= ? and Game_date <= ?
+        order by Game_date desc');
+        $stmt->bind_param("ssss", $Name, $Name, $Start_date, $End_date);
         $stmt->execute();
+        $result = $stmt->get_result();
      } else {
         echo -1;
      }
 
      $emparray = array();
-     while($row =mysqli_fetch_assoc($result))
+     while($row=$result->fetch_array(MYSQLI_ASSOC))
      {
          $emparray[] = $row;
      }

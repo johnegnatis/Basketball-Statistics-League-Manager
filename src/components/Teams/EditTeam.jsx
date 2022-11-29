@@ -20,29 +20,39 @@ export default function EditTeam ({ loading, editData, setEditData, sendEditData
   }
 
   return (
-    <Drawer open={!!editData} onOpen={() => setTrophyCount(parseInt(editData.No_trophy))} backdrop autoFocus size='xs' onClose={() => setEditData('')} placement="right">
-        <Drawer.Header>
-            <Drawer.Title>{`Edit Team: ${editData.Name}`}</Drawer.Title>
-        </Drawer.Header>
-        <Drawer.Body>
-            {/* Edit NoTrophy */}
-            <span>Edit number of trophies:</span>
-            <Button onClick={() => incrementTrophy(-1)}>-</Button>
-            <span>{trophyCount}</span>
-            <Button onClick={() => incrementTrophy(+1)}>+</Button>
+    <Drawer open={!!editData}
+      onOpen={() => setTrophyCount(parseInt(editData.No_trophy))}
+      backdrop
+      autoFocus
+      size='xs'
+      onClose={() => setEditData('')}
+      placement="right">
+      <Drawer.Header>
+        <Drawer.Title>{`Edit Team: ${editData.Name}`}</Drawer.Title>
+      </Drawer.Header>
+      <Drawer.Body>
+        {/* Edit NoTrophy */}
+        <span>Edit number of trophies:</span>
+        <Button onClick={() => incrementTrophy(-1)}>-</Button>
+        <span>{trophyCount}</span>
+        <Button onClick={() => incrementTrophy(+1)}>+</Button>
 
-            <br />
+        <br />
 
-            {/* Coach names */}
-            <span>Edit coach name:</span>
-            <Input placeholder={editData.Coach_name} ref={coachRef} />
+        {/* Coach names */}
+        <span>Edit coach name:</span>
+        <Input placeholder={editData.Coach_name}
+          ref={coachRef} />
 
-            <br />
+        <br />
 
-            {/* Submit */}
-            <Button loading={loading} onClick={() => sendPayload()} appearance='primary' color='green'
-            >Submit</Button>
-        </Drawer.Body>
+        {/* Submit */}
+        <Button loading={loading}
+          onClick={() => sendPayload()}
+          appearance='primary'
+          color='green'
+        >Submit</Button>
+      </Drawer.Body>
     </Drawer>
   )
 }

@@ -3,55 +3,55 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 
-import { Link } from 'react-router-dom'
-import { NAV } from '../../appUtils'
-
-import EditIcon from '../../images/edit.svg'
-
-export function Table ({ data, editTeamName }) {
+export function GameTable ({ data, teamName }) {
   const columns = useMemo(
     () => [
       {
-        Header: '-',
+        Header: 'Games',
         columns: [
           {
-            Header: 'Name',
-            accessor: 'Name',
+            Header: 'Result',
             Cell: (props) => (
-              <div>
-                <Link className='table-link'
-                  to={NAV.getSingleTeamRoute(props.row.original.Name)}>
-                  {(props.row.original.Name) ? props.row.original.Name : 'error'}
-                </Link>
+              <div className='table-width'>
+                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
+                  ? (props.row.original.Home_team_points - props.row.original.Away_team_points > 0) ? 'Win' : 'Loss'
+                  : (props.row.original.Home_team_points - props.row.original.Away_team_points > 0) ? 'Loss' : 'Win'}
               </div>
             )
           },
           {
-            Header: 'Trophies',
-            accessor: 'No_trophy',
+            Header: 'Opponent',
             Cell: (props) => (
-              <span>
-                {props.row.original.No_trophy}
-                <img src={EditIcon}
-                  alt="edit"
-                  height="20"
-                  onClick={() =>
-                    editTeamName(props.row.original.Name)}/>
-              </span>
+              <div className='table-width'>
+                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
+                  ? props.row.original.Away_team
+                  : props.row.original.Home_team}
+              </div>
             )
           },
           {
-            Header: "Coach's Name",
-            accessor: 'Coach_name',
+            Header: 'PF',
             Cell: (props) => (
-              <span>
-                {props.row.original.Coach_name}
-                <img src={EditIcon}
-                  alt="edit"
-                  height="20"
-                  onClick={() => editTeamName(props.row.original.Name)}/>
-              </span>
+              <div className='table-width'>
+                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
+                  ? props.row.original.Home_team_points
+                  : props.row.original.Away_team_points}
+              </div>
             )
+          },
+          {
+            Header: 'PA',
+            Cell: (props) => (
+              <div>
+                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
+                  ? props.row.original.Away_team_points
+                  : props.row.original.Home_team_points}
+              </div>
+            )
+          },
+          {
+            Header: 'Game Date',
+            accessor: 'Game_date'
           }
         ]
       }
@@ -68,6 +68,7 @@ export function Table ({ data, editTeamName }) {
     data
   })
 
+  if (!data || data.length <= 0) return <div>No data</div>
   return (
     <table className="team-table"
       {...getTableProps()}>

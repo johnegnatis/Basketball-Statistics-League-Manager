@@ -2,55 +2,66 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
+import { toPercent } from '../../appUtils'
 
-import { Link } from 'react-router-dom'
-import { NAV } from '../../appUtils'
-
-import EditIcon from '../../images/edit.svg'
-
-export function Table ({ data, editTeamName }) {
+export function PlayerTable ({ data }) {
   const columns = useMemo(
     () => [
       {
-        Header: '-',
+        Header: 'Players',
         columns: [
           {
             Header: 'Name',
-            accessor: 'Name',
+            accessor: 'name',
             Cell: (props) => (
               <div>
-                <Link className='table-link'
-                  to={NAV.getSingleTeamRoute(props.row.original.Name)}>
-                  {(props.row.original.Name) ? props.row.original.Name : 'error'}
-                </Link>
+                {`${props.row.original.Fname} ${props.row.original.Lname}`}
               </div>
             )
           },
           {
-            Header: 'Trophies',
-            accessor: 'No_trophy',
+            Header: 'Height',
+            accessor: 'height',
             Cell: (props) => (
-              <span>
-                {props.row.original.No_trophy}
-                <img src={EditIcon}
-                  alt="edit"
-                  height="20"
-                  onClick={() =>
-                    editTeamName(props.row.original.Name)}/>
-              </span>
+              <div>
+                {`${props.row.original.Height} cm`}
+              </div>
             )
           },
           {
-            Header: "Coach's Name",
-            accessor: 'Coach_name',
+            Header: 'Weight',
+            accessor: 'weight',
             Cell: (props) => (
-              <span>
-                {props.row.original.Coach_name}
-                <img src={EditIcon}
-                  alt="edit"
-                  height="20"
-                  onClick={() => editTeamName(props.row.original.Name)}/>
-              </span>
+              <div>
+                {`${props.row.original.Weight} kg`}
+              </div>
+            )
+          },
+          {
+            Header: 'FG%',
+            accessor: 'fg',
+            Cell: (props) => (
+              <div>
+                {toPercent(props.row.original.fg_percentage)}
+              </div>
+            )
+          },
+          {
+            Header: 'ThreePT%',
+            accessor: 'tp',
+            Cell: (props) => (
+              <div>
+                {toPercent(props.row.original.three_pt_percentage)}
+              </div>
+            )
+          },
+          {
+            Header: 'FT%',
+            accessor: 'ft',
+            Cell: (props) => (
+              <div>
+                {toPercent(props.row.original.ft_percentage)}
+              </div>
             )
           }
         ]
@@ -68,6 +79,7 @@ export function Table ({ data, editTeamName }) {
     data
   })
 
+  if (data.length <= 0) return <div>No data</div>
   return (
     <table className="team-table"
       {...getTableProps()}>

@@ -4,12 +4,12 @@ import Team from '../components/Teams'
 
 const Teams = () => {
   return (
-        <div>
-            <Navigation/>
-            <div className="App-header">
-                <Team/>
-            </div>
-        </div>
+    <div>
+      <Navigation/>
+      <div className="App-header">
+        <Team/>
+      </div>
+    </div>
   )
 }
 export default Teams

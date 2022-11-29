@@ -17,5 +17,8 @@
         "react"
     ],
     "rules": {
+        "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
+        "indent": ["error", 2]
+        // "no-unused-vars": ["warning", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
     }
 }
