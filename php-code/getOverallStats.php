@@ -45,6 +45,9 @@
       if($Order == 6) {
         $sql .= ' order by (p.Height/p.Weight) desc';
       }
+      if($Order == 7) {
+        $sql .= ' order by (p.Height/p.Weight) asc';
+      }
      }
 
      $result = $conn->query($sql);
