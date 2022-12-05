@@ -1,0 +1,31 @@
+select p.Fname, p.Lname, fg_percentage, three_pt_percentage, ft_percentage, plus_minus_avg from overall_preformance op, player p
+where op.SSN = p.SSN
+
+--- Undervalued Players
+-- order by (fg_percentage / average_minutes ) desc
+
+--- Most Valuables short player
+-- order by (o.plus_minus_avg / p.Height) desc
+
+--- Skinny
+-- order by (p.Height/p.Weight)
+
+
+-- (select sum(rating) as 'rating', avg(ssn) as 'ssn'
+-- from (
+-- (select rating * -1 as 'rating', ssn from
+-- (select ssn, tbl.tile_nr as 'half', AVG(rating) as 'rating' from
+-- (select pgs.ssn, ntile(2) over(order by pgs.Game_date) as tile_nr, (pgs.fg_made/pgs.fg_attempt) as 'rating', g.Game_date from game g, player_game_statistics pgs 
+-- where (pgs.Home_team = 'Alpha' or pgs.Away_team = 'Alpha') and pgs.Home_team = g.Home_team 
+-- and pgs.Away_team = G.Away_team and pgs.Game_date = g.Game_date and pgs.SSN = '167341992') as tbl
+-- group by tbl.tile_nr) as tbl
+-- where half = 1)
+-- union
+-- (select rating, ssn from
+-- (select ssn, tbl.tile_nr as 'half', AVG(rating) as 'rating' from
+-- (select pgs.ssn, ntile(2) over(order by pgs.Game_date) as tile_nr, (pgs.fg_made/pgs.fg_attempt) as 'rating', g.Game_date from game g, player_game_statistics pgs 
+-- where (pgs.Home_team = 'Alpha' or pgs.Away_team = 'Alpha') and pgs.Home_team = g.Home_team 
+-- and pgs.Away_team = G.Away_team and pgs.Game_date = g.Game_date and pgs.SSN = '167341992') as tbl
+-- group by tbl.tile_nr) as tbl
+-- where half = 2)
+-- ) as tbl)
