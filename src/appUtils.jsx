@@ -40,6 +40,9 @@ export const getQuery = {
   },
   getTeamStats: (Name, Start_date = '1900-1-1', End_date = '3000-1-1') => {
     return trimURL(`http://localhost/nba/getTeamStats.php?Name=${Name}&Start_date=${Start_date}&End_date=${End_date}`)
+  },
+  getOverallStats: () => {
+    return trimURL('http://localhost/nba/getOverallStats.php')
   }
 }
 
