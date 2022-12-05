@@ -12,23 +12,26 @@ import Stats from './pages/Stats'
 import Teams from './pages/Teams'
 import NotFound from './pages/NotFound'
 import IndividualTeam from './pages/IndividualTeam'
+import { CustomProvider } from 'rsuite'
 
 function App () {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index
-          element={<LandingPage/>} />
-        <Route path={NAV.STATS}
-          element={<Stats />}/>
-        <Route path={NAV.TEAMS}
-          element={<Teams />}/>
-        <Route path={`${NAV.TEAMS}/:teamName`}
-          element = {<IndividualTeam /> } />
-        <Route path="*"
-          element={<NotFound />}/>
-      </Routes>
-    </BrowserRouter>
+    <CustomProvider theme="dark">
+      <BrowserRouter>
+        <Routes>
+          <Route index
+            element={<LandingPage/>} />
+          <Route path={NAV.STATS}
+            element={<Stats />}/>
+          <Route path={NAV.TEAMS}
+            element={<Teams />}/>
+          <Route path={`${NAV.TEAMS}/:teamName`}
+            element = {<IndividualTeam /> } />
+          <Route path="*"
+            element={<NotFound />}/>
+        </Routes>
+      </BrowserRouter>
+    </CustomProvider>
   )
 }
 

@@ -9,7 +9,7 @@ export function MyTable ({ data }) {
   return (
     <Table
       height={600}
-      width={150 * 6}
+      width={150 * 7}
       data={data}
     >
       <Column width={150}>
@@ -20,6 +20,11 @@ export function MyTable ({ data }) {
       <Column width={150}>
         <HeaderCell>Last Name</HeaderCell>
         <Cell dataKey="Lname" />
+      </Column>
+
+      <Column width={150}>
+        <HeaderCell>Team</HeaderCell>
+        <Cell dataKey="Team" />
       </Column>
 
       <Column width={150}>

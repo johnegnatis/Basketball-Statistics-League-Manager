@@ -7,7 +7,7 @@ const Stats = () => {
     <div>
       <Navigation/>
       <div className="App-header">
-        <StatsComponent />
+        <StatsComponent/>
       </div>
     </div>
   )
