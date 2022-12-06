@@ -1,14 +1,13 @@
 import React from 'react'
 import { Navigation } from './Navigation'
+import StatsComponent from '../components/Stats'
 
 const Stats = () => {
   return (
     <div>
       <Navigation/>
       <div className="App-header">
-        <h1>
-            Stats
-        </h1>
+        <StatsComponent/>
       </div>
     </div>
   )

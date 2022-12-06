@@ -82,20 +82,19 @@ const DisplayTeam = ({ teamName }) => {
 
   const gameTable = (loading || !gameData || gameData.length <= 0)
     ? ''
-    : <GameTable data={gameData}
-      teamName={teamName}/>
+    : <GameTable data={gameData}/>
   const playerTable = (loading || !playerData || playerData.length <= 0) ? '' : <PlayerTable data={playerData}/>
   const coachName = (loading || !playerData || playerData.length <= 0) ? '' : playerData[0].Coach_name
   const noTrophy = (loading || !playerData || playerData.length <= 0) ? '' : playerData[0].No_trophy
   let numWins = 0
   let numLoss = 0
   gameData && gameData.forEach((game) => {
-    const isHome = game.Home_team === teamName
-    const goalDif = game.Home_team_points - game.Away_team_points
-    if ((isHome && goalDif >= 0) || (!isHome && goalDif <= 0)) { numWins++ } else { numLoss++ }
+    if (game.points_for > game.points_against) {
+      numWins++
+    } else numLoss++
   })
 
-  if (error) return <div>{`error ${error}`}</div>
+  if (error) return <div>error</div>
   return (
     <div className="individual-team">
       <DateRangePicker placeholder='Select date range'

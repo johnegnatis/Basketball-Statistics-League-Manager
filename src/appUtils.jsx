@@ -40,6 +40,16 @@ export const getQuery = {
   },
   getTeamStats: (Name, Start_date = '1900-1-1', End_date = '3000-1-1') => {
     return trimURL(`http://localhost/nba/getTeamStats.php?Name=${Name}&Start_date=${Start_date}&End_date=${End_date}`)
+  },
+  getOverallStats: (search = '', ordering = '') => {
+    let http = 'http://localhost/nba/getOverallStats.php'
+    if (search) http += `?Search=${search}`
+    if (!search && ordering) {
+      http += `?Order=${ordering}`
+    } else if (ordering) {
+      http += `&Order=${ordering}`
+    }
+    return trimURL(http)
   }
 }
 
@@ -57,3 +67,15 @@ export function formatDate (d) {
 
   return [year, month, day].join('-')
 }
+
+export const orderingMapping = [
+  'None',
+  'Best FT Percentage',
+  'Best FG Percentage',
+  'Best Three Point Percentage',
+  'Most Undervalued Players',
+  'Most Valuable Short Players',
+  'Skinniest Players (BMI)',
+  'Largest Players (BMI)',
+  'Most Improved Players'
+]

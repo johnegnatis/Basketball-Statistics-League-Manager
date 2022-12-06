@@ -18,13 +18,20 @@
      }
      
      if( isset($Name) && isset($Start_date) && isset($End_date) ) {
-        $stmt = $conn->prepare('select Home_team, Away_team, Home_team_points, Away_team_points,
-        Game_date
-        from game g
-        where (g.Home_team = ? or Away_team = ?)
-        and Game_date >= ? and Game_date <= ?
-        order by Game_date desc');
-        $stmt->bind_param("ssss", $Name, $Name, $Start_date, $End_date);
+        $stmt = $conn->prepare(
+         'select \'home\' as \'type\', Away_team as \'opponent\', Home_team_points as \'points_for\', Away_team_points as \'points_against\',
+                  Game_date
+                  from game g
+                  where (g.Home_team = ?)
+                  and Game_date >= ? and Game_date <= ?
+            union 
+            select \'away\' as \'type\', Home_team as \'opponent\', Away_team_points as \'points_for\', Home_team_points as \'points_against\',
+                  Game_date
+                  from game g
+                  where (g.Away_team = ?)
+                  and Game_date >= ? and Game_date <= ?
+            order by Game_date desc');
+        $stmt->bind_param("ssssss", $Name, $Start_date, $End_date, $Name, $Start_date, $End_date);
         $stmt->execute();
         $result = $stmt->get_result();
      } else {

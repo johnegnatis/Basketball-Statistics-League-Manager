@@ -39,7 +39,6 @@ export default function Team () {
 
   // sets team name to edit
   const setTeamName = (name) => {
-    console.log(name)
     const editTuple = teamData.find((row) => row.Name === name)
     if (editTuple) {
       setEditData(editTuple)

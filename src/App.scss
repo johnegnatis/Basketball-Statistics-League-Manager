@@ -1,10 +1,19 @@
+$bg-color: #7a6c5d;
+$primary:#2A3D45;
+$secondary: #c17c74;
+$ternary: #101619;
+$fourary: #1a1d24;
+
 .App {
   text-align: center;
 }
+h1, h2, h3, h4, h5 {
+  color: $ternary !important;
+}
 
 .App-header {
-  background-color: var(--rs-green-100);
-  min-height: 100vh;
+  background-color: $bg-color;
+  min-height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,11 +23,22 @@
 
 .landing {
   text-align: center;
+  text-decoration: none;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    color: $ternary !important;
+  }
 }
 
 nav {
-  background-color: black;
-  color: black;
+  background-color: $secondary;
+  color: $secondary;
   display: flex;
 
   img {
@@ -33,7 +53,7 @@ nav {
     display: flex;
     float: right;
     :hover {
-      background-color: green;
+      background-color: $ternary;
     }
     
 
@@ -41,12 +61,12 @@ nav {
       cursor: pointer;
       padding: 5px;
       margin-right: 10px;
-      background-color: white;
+      background-color: $primary;
       border-radius: 10px;
 
       .no-dec {
         text-decoration: none;
-        color: black;
+        color: $secondary;
       }
     }
   }
@@ -78,7 +98,8 @@ nav {
     margin-right: 15px !important;
 
   }
-  color: black;
+  color: whitesmoke;
+  background-color: $fourary;
   margin: 2px;
   th[role="columnheader"] {
     font-weight: 800;
@@ -88,15 +109,15 @@ nav {
     padding-left: 10px !important;
   }
   thead {
-    background-color: whitesmoke;
+    background-color: $primary;
   }
   tbody {
-    background-color: whitesmoke;
+    background-color: $primary;
 
     tr {
       div {
         :hover {
-          color: green;
+          color: $ternary;
         }
       }
       img {
@@ -107,7 +128,7 @@ nav {
 }
 .table-link {
   text-decoration: none;
-  color: black;
+  color: $secondary;
   cursor: pointer;
 }
 
@@ -131,6 +152,7 @@ nav {
     text-align: center;
 
     h1 {
+      
       font-size: 50px;
     }
   }
@@ -141,5 +163,16 @@ nav {
 
   table {
     margin: 20px;
+  }
+}
+
+.overall-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+  div {
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }
