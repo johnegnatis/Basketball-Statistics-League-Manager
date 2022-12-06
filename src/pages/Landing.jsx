@@ -5,15 +5,15 @@ const LandingPage = () => {
   return (
     <div>
       <Navigation/>
-      <div className="App-header">
+      <div className="App-header landing">
         <h1>
-                    NBA Project
+          NBA Project
         </h1>
         <ul>
           <li>John Egnatis</li>
           <li>Eton Weber</li>
           <li>Gia Tran</li>
-          <li>Peyton ..</li>
+          <li>Peyton Walker</li>
           <li>Luke Tran</li>
         </ul>
       </div>

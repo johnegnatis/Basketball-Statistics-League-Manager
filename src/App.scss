@@ -1,13 +1,14 @@
 $bg-color: #7a6c5d;
 $primary:#2A3D45;
 $secondary: #c17c74;
-$tercary: #101619;
+$ternary: #101619;
+$fourary: #1a1d24;
 
 .App {
   text-align: center;
 }
 h1, h2, h3, h4, h5 {
-  color: $tercary !important;
+  color: $ternary !important;
 }
 
 .App-header {
@@ -22,6 +23,17 @@ h1, h2, h3, h4, h5 {
 
 .landing {
   text-align: center;
+  text-decoration: none;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    color: $ternary !important;
+  }
 }
 
 nav {
@@ -41,7 +53,7 @@ nav {
     display: flex;
     float: right;
     :hover {
-      background-color: $tercary;
+      background-color: $ternary;
     }
     
 
@@ -86,7 +98,8 @@ nav {
     margin-right: 15px !important;
 
   }
-  color: $secondary;
+  color: whitesmoke;
+  background-color: $fourary;
   margin: 2px;
   th[role="columnheader"] {
     font-weight: 800;
@@ -104,7 +117,7 @@ nav {
     tr {
       div {
         :hover {
-          color: $tercary;
+          color: $ternary;
         }
       }
       img {

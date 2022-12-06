@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 
-export function GameTable ({ data, teamName }) {
+export function GameTable ({ data }) {
   const columns = useMemo(
     () => [
       {
@@ -13,9 +13,7 @@ export function GameTable ({ data, teamName }) {
             Header: 'Result',
             Cell: (props) => (
               <div className='table-width'>
-                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
-                  ? (props.row.original.Home_team_points - props.row.original.Away_team_points > 0) ? 'Win' : 'Loss'
-                  : (props.row.original.Home_team_points - props.row.original.Away_team_points > 0) ? 'Loss' : 'Win'}
+                {(props.row.original.points_for > props.row.original.points_against) ? 'Win' : 'Loss'}
               </div>
             )
           },
@@ -23,9 +21,7 @@ export function GameTable ({ data, teamName }) {
             Header: 'Opponent',
             Cell: (props) => (
               <div className='table-width'>
-                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
-                  ? props.row.original.Away_team
-                  : props.row.original.Home_team}
+                {props.row.original.opponent}
               </div>
             )
           },
@@ -33,9 +29,7 @@ export function GameTable ({ data, teamName }) {
             Header: 'PF',
             Cell: (props) => (
               <div className='table-width'>
-                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
-                  ? props.row.original.Home_team_points
-                  : props.row.original.Away_team_points}
+                {props.row.original.points_for}
               </div>
             )
           },
@@ -43,9 +37,7 @@ export function GameTable ({ data, teamName }) {
             Header: 'PA',
             Cell: (props) => (
               <div>
-                {(data[0].Home_team.toLowerCase() === teamName.toLowerCase())
-                  ? props.row.original.Away_team_points
-                  : props.row.original.Home_team_points}
+                {props.row.original.points_against}
               </div>
             )
           },

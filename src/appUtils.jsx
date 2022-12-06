@@ -75,6 +75,7 @@ export const orderingMapping = [
   'Best Three Point Percentage',
   'Most Undervalued Players',
   'Most Valuable Short Players',
-  'Skinniest Players',
-  'Fattest Players'
+  'Skinniest Players (BMI)',
+  'Largest Players (BMI)',
+  'Most Improved Players'
 ]
