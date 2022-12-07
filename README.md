@@ -1,8 +1,8 @@
-# Hello team
+# BASKETBALL STATS LEAGUE MANAGER
 
 ## Prerequisites:
 
-[NodeJS](https://nodejs.org/en/download/)
+[NodeJS and NPM](https://nodejs.org/en/download/)
 
 [MySQL](https://dev.mysql.com/downloads/mysql/)
 
@@ -10,13 +10,8 @@
 
 [XAMPP for PHP host](https://www.apachefriends.org/download.html)
 
-## Steps
+## Steps to setup development enviroment
 1. Install all the prereqs.
-2. Pull the repository, type 'npm install' and 'npm start' to start the frontend. You should only need to do 'npm install' on startup.
-3. The files in the folder "php-files" are to be copied into the XAMPP htdocs.
-4. Setup MYSQL server (Use the same DB username/password for simplicity).
-5. Import mysql dump folder.
-
-## Attribute:
-
-- edit by Yana Marudova from <a href="https://thenounproject.com/browse/icons/term/edit/" target="_blank" title="edit Icons">Noun Project</a>
+1. Pull the repository, type 'npm install' and 'npm start' to start the frontend. You should only need to do 'npm install' on startup.
+1. The files in the folder "php-files" are to be copied into the XAMPP htdocs in a folder named 'nba'. This is important so that the frontend can connect to the backend.
+1. Setup MYSQL server (Use the same DB username/password hardcoded in php files for simplicity), and import mysql dump folder found in 'database-dump'. I suggest using MySQL Workbench.
