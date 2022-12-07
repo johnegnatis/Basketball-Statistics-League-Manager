@@ -12,32 +12,34 @@ export function NewTable ({ data, editTeamName }) {
   return (
     <Table
       height={500}
-      width={350 * 2 + 250}
+      width={300 * 2 + 200 * 2 + 100}
       data={data}
-      onRowClick={rowData => {
-        console.log(rowData)
-      }}
     >
-      <Column width={350}>
+      <Column width={300}>
         <HeaderCell>Name</HeaderCell>
         <Cell>
           {rowData => (
             <Link className='table-link'
               to={NAV.getSingleTeamRoute(rowData.Name)}>
-              {(rowData.Name) ? rowData.Name : 'error'}
+              {rowData.Name}
             </Link>
           )}
         </Cell>
       </Column>
 
-      <Column width={150}>
+      <Column width={200}>
         <HeaderCell>Number of Trophies</HeaderCell>
         <Cell dataKey="No_trophy" />
       </Column>
 
-      <Column width={350}>
+      <Column width={300}>
         <HeaderCell>Coach Name</HeaderCell>
         <Cell dataKey="Coach_name" />
+      </Column>
+
+      <Column width={200}>
+        <HeaderCell>Number of Players</HeaderCell>
+        <Cell dataKey="num_players" />
       </Column>
 
       <Column width={100}

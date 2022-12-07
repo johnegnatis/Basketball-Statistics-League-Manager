@@ -4,8 +4,11 @@ import { getQuery, orderingMapping, getMessage } from '../../appUtils'
 import jQuery from 'jquery'
 import { toaster, Input, Dropdown, Button, Loader } from 'rsuite'
 import { MyTable } from './Table'
+import { useNavigate } from 'react-router-dom'
 
 export default function StatsComponent () {
+  const navigate = useNavigate()
+
   // gets data to display in tables
   const [statsData, setStatsData] = useState('')
   const [loading, setLoading] = useState(true)
@@ -54,7 +57,7 @@ export default function StatsComponent () {
   }, [])
 
   const table = useMemo(() => <MyTable data={statsData}
-    loading={loading} />, [loading, statsData])
+    navigate={navigate} />, [loading, statsData, navigate])
 
   if (error) return <h1>{'error' || 'no data'}</h1>
   if (loading) {

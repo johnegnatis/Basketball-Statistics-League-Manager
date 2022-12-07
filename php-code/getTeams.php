@@ -13,7 +13,10 @@
         exit();
      }
      
-     $sql = 'SELECT * FROM team';
+     $sql = 'SELECT t.Name, No_trophy, Coach_name, count(*) as \'num_players\'
+     FROM team t, player p
+     where t.Name = p.Team 
+     group by t.Name';
      $result = $conn->query($sql);
 
      $emparray = array();
