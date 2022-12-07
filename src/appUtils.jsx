@@ -8,6 +8,9 @@ export const NAV = {
   TEAMS: '/teams',
   getSingleTeamRoute: (teamName) => {
     return `/teams/${teamName.toLowerCase().replace(/\s/g, '')}`
+  },
+  getPlayerRoute: (Fname, Lname) => {
+    return `/stats/${Fname}${Lname}`
   }
 }
 
@@ -50,6 +53,9 @@ export const getQuery = {
       http += `&Order=${ordering}`
     }
     return trimURL(http)
+  },
+  getPlayerStats: (SSN, Start_date = '1900-1-1', End_date = '3000-1-1') => {
+    return trimURL(`http://localhost/nba/getPlayerStats.php?SSN=${SSN}&Start_date=${Start_date}&End_date=${End_date}`)
   }
 }
 
@@ -68,14 +74,14 @@ export function formatDate (d) {
   return [year, month, day].join('-')
 }
 
-export const orderingMapping = [
-  'None',
-  'Best FT Percentage',
+export const orderingMapping = [ // these index numbers are sent to backend to know which sort to do
+  'None', // 0
+  'Best FT Percentage', // 1
   'Best FG Percentage',
   'Best Three Point Percentage',
   'Most Undervalued Players',
   'Most Valuable Short Players',
-  'Skinniest Players (BMI)',
-  'Largest Players (BMI)',
+  'Slimmest Players (BMI)',
+  'Heaviest Players (BMI)',
   'Most Improved Players'
 ]

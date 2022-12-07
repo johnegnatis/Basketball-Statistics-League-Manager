@@ -12,6 +12,7 @@ import Stats from './pages/Stats'
 import Teams from './pages/Teams'
 import NotFound from './pages/NotFound'
 import IndividualTeam from './pages/IndividualTeam'
+import IndividualPlayer from './pages/IndividualPlayer'
 import { CustomProvider } from 'rsuite'
 
 function App () {
@@ -27,6 +28,8 @@ function App () {
             element={<Teams />}/>
           <Route path={`${NAV.TEAMS}/:teamName`}
             element = {<IndividualTeam /> } />
+          <Route path={`${NAV.STATS}/:player`}
+            element = {<IndividualPlayer /> } />
           <Route path="*"
             element={<NotFound />}/>
         </Routes>

@@ -3,14 +3,20 @@
 import React from 'react'
 // import { useTable } from 'react-table'
 import { Table, Column, HeaderCell, Cell } from 'rsuite-table'
-import { toPercent } from '../../appUtils'
+import { NAV, toPercent } from '../../appUtils'
 
-export function MyTable ({ data }) {
+export function MyTable ({ data, navigate }) {
   return (
     <Table
       height={600}
       width={150 * 7}
       data={data}
+      onRowClick={(rowData) =>
+        navigate(
+          NAV.getPlayerRoute(rowData.Fname, rowData.Lname),
+          { state: rowData }
+        )
+      }
     >
       <Column width={150}>
         <HeaderCell>First Name</HeaderCell>

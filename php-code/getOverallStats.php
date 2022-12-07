@@ -19,9 +19,11 @@
         exit();
      }
      
-     $sql = 'select p.Fname, p.Lname, p.Team, fg_percentage, three_pt_percentage, ft_percentage,
-     plus_minus_avg from overall_preformance op, player p
-     where op.SSN = p.SSN';
+     $sql = 'select p.SSN, p.Fname, p.Lname, p.Team, fg_percentage, three_pt_percentage, ft_percentage,
+            plus_minus_avg, p.Height, p.Weight, 
+            FLOOR(DATEDIFF(CURDATE(), p.Dateofbirth) / 365.25) as \'age\'
+            from overall_preformance op, player p, player_improvement i
+            where op.SSN = p.SSN and i.SSN = p.SSN';
 
      if(isset($Search)) {
       $sql .= ' and (p.Fname like \'%'.$Search.'%\' or p.Lname like \'%'.$Search.'%\' or p.Team  like \'%'.$Search.'%\')';
@@ -47,6 +49,9 @@
       }
       if($Order == 7) {
         $sql .= ' order by (p.Height/p.Weight) asc';
+      }
+      if($Order == 8) {
+        $sql .= ' order by i.improvement desc';
       }
      }
 

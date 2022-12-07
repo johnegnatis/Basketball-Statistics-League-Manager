@@ -7,7 +7,7 @@ const NotFound = () => {
       <Navigation/>
       <div className="App-header">
         <h1>
-                    Nothing here.
+          Nothing here.
         </h1>
       </div>
     </div>

@@ -1,19 +1,20 @@
-$bg-color: #7a6c5d;
-$primary:#2A3D45;
-$secondary: #c17c74;
-$ternary: #101619;
+$bg-color: hsl(0, 0%, 0%);
+$primary:#150050;
+$secondary: #3f0071;
+$ternary: #8e25c6;
 $fourary: #1a1d24;
 
 .App {
   text-align: center;
+  background-color: $secondary;
 }
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h5 {
   color: $ternary !important;
 }
 
 .App-header {
-  background-color: $bg-color;
-  min-height: calc(100vh - 50px);
+  background: linear-gradient(to bottom, black, $secondary);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +22,24 @@ h1, h2, h3, h4, h5 {
   font-size: calc(10px + 2vmin);
 }
 
+.highlights {
+  background-color: $fourary;
+  border-radius: 20px;
+  color: $ternary;
+  border: #1a1d24;
+  border-width: 10px;
+  display: block;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  background: linear-gradient(to top, $fourary,  rgb(113, 112, 112));
+}
+
+
+
 .landing {
+  z-index: 10;
   text-align: center;
   text-decoration: none;
 
@@ -34,11 +52,18 @@ h1, h2, h3, h4, h5 {
   li {
     color: $ternary !important;
   }
+
+  .image {
+    padding: 30px;
+    margin: 10px;
+    border-radius: 100px;
+    z-index: 0;
+  }
 }
 
 nav {
   background-color: $secondary;
-  color: $secondary;
+  color: white;
   display: flex;
 
   img {
@@ -127,8 +152,10 @@ nav {
   }
 }
 .table-link {
+  text-align: center;
   text-decoration: none;
-  color: $secondary;
+  color: $ternary;
+  font-weight: bolder;
   cursor: pointer;
 }
 
@@ -139,6 +166,9 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.player {
+ margin-left: 200px;
 }
 
 .individual-team {
@@ -158,6 +188,7 @@ nav {
   }
 }
 
+
 .table-column-2 {
   display: flex;
 
@@ -175,4 +206,8 @@ nav {
     margin-right: 10px;
     margin-left: 10px;
   }
+}
+
+.edit-team {
+  color: green;
 }
