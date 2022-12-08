@@ -2,9 +2,9 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
-import { toPercent } from '../../appUtils'
+import { toPercent, NAV } from '../../appUtils'
 
-export function PlayerTable ({ data }) {
+export function PlayerTable ({ data, navigate }) {
   const columns = useMemo(
     () => [
       {
@@ -14,7 +14,10 @@ export function PlayerTable ({ data }) {
             Header: 'Name',
             accessor: 'name',
             Cell: (props) => (
-              <div>
+              <div className='table-link'
+                onClick={() =>
+                  navigate(NAV.getPlayerRoute(props.row.original.Fname, props.row.original.Lname),
+                    { state: props.row.original })}>
                 {`${props.row.original.Fname} ${props.row.original.Lname}`}
               </div>
             )

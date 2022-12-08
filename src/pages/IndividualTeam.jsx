@@ -8,7 +8,7 @@ const IndividualTeam = () => {
 
   return (
     <div>
-      <Navigation />
+      <Navigation header={params.teamName}/>
       <div className="App-header">
         <DisplayTeam teamName={params.teamName}/>
       </div>

@@ -8,7 +8,7 @@ const IndividualPlayer = () => {
   const params = useLocation() // this will give us the name of the player we have queried for
   return (
     <div>
-      <Navigation />
+      <Navigation header={`${params.state.Fname} ${params.state.Lname}`}/>
       <div className="App-header">
         <DisplayPlayer player={params.state}/>
       </div>

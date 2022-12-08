@@ -5,7 +5,7 @@ import StatsComponent from '../components/Stats'
 const Stats = () => {
   return (
     <div>
-      <Navigation/>
+      <Navigation header="overall statistics"/>
       <div className="App-header">
         <StatsComponent/>
       </div>

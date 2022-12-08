@@ -59,7 +59,6 @@ const DisplayPlayer = ({ player }) => {
   }, [setDate])
 
   const table = useMemo(() => <MyTable data={playerStats}/>, [playerStats])
-  console.log(player, playerStats[0])
 
   if (error) return <div>error</div>
   return (
@@ -76,10 +75,6 @@ const DisplayPlayer = ({ player }) => {
           content="loading" />)
         : (
           <>
-            <div className='team-data'>
-              <h1>{`${player.Fname} ${player.Lname}`}</h1>
-              <h3>{`Team: ${playerStats[0].team}`}</h3>
-            </div>
             <div className='column8-2'>
               <div>
                 <div className='highlights'>
@@ -87,6 +82,7 @@ const DisplayPlayer = ({ player }) => {
                     alt="player"
                     width='100'/>
                   <h2>Profile</h2>
+                  <p>{`Team: ${playerStats[0].team}`}</p>
                   <p>{`Age: ${player.age}/yo`}</p>
                   <p>{`Height ${player.Height} cm`}</p>
                   <p>{`Weight: ${player.Weight} kg`}</p>
