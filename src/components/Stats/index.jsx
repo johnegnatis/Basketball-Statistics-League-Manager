@@ -68,7 +68,6 @@ export default function StatsComponent () {
   }
   return (
     <>
-      <h1>Overall Statistics</h1>
       <div className="overall-header">
         <div>
           <Input placeholder="Search"

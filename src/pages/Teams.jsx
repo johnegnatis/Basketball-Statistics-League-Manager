@@ -5,7 +5,7 @@ import Team from '../components/Teams'
 const Teams = () => {
   return (
     <div>
-      <Navigation/>
+      <Navigation header="teams"/>
       <div className="App-header">
         <Team/>
       </div>

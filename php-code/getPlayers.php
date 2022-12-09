@@ -17,7 +17,7 @@
      
      if( isset($Name) ) {
         $stmt = $conn->prepare('select Fname, Lname, Height, Weight, Dateofbirth, No_trophy, Coach_name,
-        average_minutes, fg_total, fg_percentage, three_pt_total, three_pt_percentage, ft_total, ft_percentage, plus_minus_avg
+        average_minutes, fg_total, fg_percentage, three_pt_total, three_pt_percentage, ft_total, ft_percentage, p.SSN, plus_minus_avg, FLOOR(DATEDIFF(CURDATE(), p.Dateofbirth) / 365.25) as \'age\'
         from player p, team t, overall_preformance o
         where p.Team = t.Name and t.Name = ? and p.SSN = o.SSN');
         $stmt->bind_param("s", $Name);

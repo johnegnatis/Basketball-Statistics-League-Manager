@@ -8,7 +8,7 @@ import { NAV, toPercent } from '../../appUtils'
 export function MyTable ({ data, navigate }) {
   return (
     <Table
-      height={600}
+      height={500}
       width={150 * 7}
       data={data}
       onRowClick={(rowData) =>

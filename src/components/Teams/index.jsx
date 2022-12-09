@@ -81,7 +81,6 @@ export default function Team () {
   if (error || !teamData || teamData.length <= 0) return <h1>{error || 'no data'}</h1>
   return (
     <>
-      <h1>Teams</h1>
       <div className='table-column-2'>
         <NewTable data={teamData}
           editTeamName={setTeamName}/>
