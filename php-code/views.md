@@ -1,5 +1,6 @@
 Player Improvement
 ```sql
+create view player_improvement as
 select ssn, sum(if((half = 1), -rating, rating)) as 'improvement' from
 (select ssn, avg(rating) as 'rating', tile_nr as 'half' from
 (select pgs.ssn, ntile(2) over(order by pgs.Game_date) as tile_nr, (pgs.fg_made/pgs.fg_attempt) as 'rating', g.Game_date 
