@@ -77,11 +77,11 @@ export function formatDate (d) {
 export const orderingMapping = [ // these index numbers are sent to backend to know which sort to do
   'None', // 0
   'Best FT Percentage', // 1
-  'Best FG Percentage',
-  'Best Three Point Percentage',
-  'Most Undervalued Players',
-  'Most Valuable Short Players',
-  'Slimmest Players (BMI)',
-  'Heaviest Players (BMI)',
-  'Most Improved Players'
+  'Best FG Percentage', // 2
+  'Best Three Point Percentage', // 3
+  'Most Undervalued Players', // 4
+  'Most Valuable Short Players', // 5
+  'Slimmest Players (BMI)', // 6
+  'Heaviest Players (BMI)', // 7
+  'Most Improved Players' // 8
 ]
